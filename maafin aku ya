@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Page untuk Abay 💌</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+        h2 {
+            color: #ff4b6e;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .btn-group {
+            position: relative;
+            height: 100px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #btnYes {
+            background-color: #ff4b6e;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 75, 110, 0.4);
+        }
+        #btnNo {
+            background-color: #e0e0e0;
+            color: #555;
+            position: absolute;
+            margin-left: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="mainCard">
+        <div class="emoji" id="emojiIcon">🥺</div>
+        <h2 id="titleText">Abay Masih Ngambek Ya?</h2>
+        <p id="descText">udin yaa ngambeknya... sayang cuek kayak martabak manis spesial, tapi lupa dikasih topping. acu kangen manisnya senyum kamu....</p>
+        
+        <div class="btn-group" id="btnGroup">
+            <button id="btnYes" onclick="nextStep()">Udah dimaafin kok ❤️</button>
+            <button id="btnNo" onmouseover="gerakKabur()" onclick="gerakKabur()">Masih ngambek 😤</button>
+        </div>
+    </div>
+
+    <script>
+        let step = 1;
+
+        function gerakKabur() {
+            const btnNo = document.getElementById('btnNo');
+            // Bikin tombol "Masih ngambek" lari-lari kalau dideketin/diklik
+            const randomX = Math.floor(Math.random() * 140) - 70;
+            const randomY = Math.floor(Math.random() * 80) - 40;
+            btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function nextStep() {
+            if (step === 1) {
+                document.getElementById('emojiIcon').innerText = '🍫';
+                document.getElementById('titleText').innerText = 'ahayyy, ciusss ni?!';
+                document.getElementById('descText').innerText = 'sebagai tanda damai, nanti ak boncengin kamu biar bisa merasakan kerennya fayu dalam membawa motor. OH IYA NANTI JUGA AK TRAKTIR ESKLIM.. PLSS BOLEH YA';
+                
+                // Ubah tombol jadi pilihan interaktif lain
+                const btnGroup = document.getElementById('btnGroup');
+                btnGroup.innerHTML = `
+                    <button id="btnYes" onclick="nextStep()" style="background-color: #ff4b6e; color: white;">mau eskrim/fayu! </button>
+                `;
+                step = 2;
+            } else if (step === 2) {
+                document.getElementById('emojiIcon').innerText = '🫂';
+                document.getElementById('titleText').innerText = 'yeay, baik baik ya!';
+                document.getElementById('descText').innerText = 'maaci ya udah mau maafin aku! ✨💖';
+                
+                document.getElementById('btnGroup').innerHTML = `
+                    <button id="btnYes" onclick="location.reload()" style="background-color: #4cd137; color: white;">❤️❤️</button>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>
